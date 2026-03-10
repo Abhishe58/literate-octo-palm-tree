@@ -1,0 +1,916 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Lexend+Deca:wght@100..900&family=Michroma&family=Noto+Sans+Display:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@100..900&family=Poiret+One&family=Roboto:ital,wght@0,100..900;1,100..900&family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <title>Nish Boutique</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Outfit", sans-serif;
+      }
+      #loader {
+        position: relative;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+      .loaderCon {
+        position: relative;
+        display: flex;
+        height: 4px;
+        width: 50%;
+        overflow: hidden;
+        margin-top: 10px;
+        background-color: #dfdfdf;
+      }
+      .loaderBox {
+        position: absolute;
+        width: 40%;
+        height: 4px;
+        background-color: black;
+        animation: loader 1s linear infinite;
+      }
+      @keyframes loader {
+        0% {
+          left: 0;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+      .world {
+        position: relative;
+        visibility: hidden;
+      }
+
+      header {
+        position: fixed;
+        width: 100%;
+        padding: 10px 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid #dfdfdf;
+        backdrop-filter: blur(15px);
+        z-index: 1;
+      }
+      .headerLogo {
+        font-family: "Delius Swash Caps", cursive;
+        white-space: nowrap;
+      }
+      .headerBox {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .headderLink {
+        padding: 10px 10px;
+        border-radius: 10px;
+        text-decoration: none;
+        color: black;
+        transition: 1s;
+        white-space: nowrap;
+        cursor: pointer;
+      }
+      .headderLink:hover {
+        transform: translateY(-4px);
+      }
+      .headerBut {
+        padding: 8px 10px;
+        border-radius: 20px;
+        text-decoration: none;
+        background-color: #792932;
+        color: white;
+        transition: 1s;
+        cursor: pointer;
+        white-space: nowrap;
+        border: 2px solid #792932;
+      }
+      .headerBut:hover {
+        background-color: transparent;
+        color: #792932;
+      }
+      .heroSection {
+        position: relative;
+        padding: 20px;
+        padding-top: 77px;
+        min-height: 100vh;
+        width: 100%;
+        display: flex;
+      }
+      .heroCon {
+        position: relative;
+        padding: 1.2rem;
+        min-height: calc(100vh - 100px);
+        width: 100%;
+        border-radius: 10px;
+        background-image: url("bgImg.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .containera {
+        position: relative;
+        width: 100%;
+        min-height: 45%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+        gap: 10px;
+      }
+      .heroDes {
+        width: 60%;
+        text-align: center;
+      }
+      .heroCtabut {
+        padding: 10px 20px;
+        height: 50px;
+        border-radius: 40px;
+        text-decoration: none;
+        background-color: #792932;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        transition: 1s;
+      }
+      .containerb {
+        position: relative;
+        min-height: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+      }
+      .xherobcon {
+        position: relative;
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 10px;
+      }
+      .conbBoxa {
+        position: relative;
+        height: 150px;
+        width: 150px;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .heroBoximg {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+        transition: 1s;
+      }
+      .heroBoximg:hover {
+        transform: scale(1.1);
+      }
+      .collectionSection {
+        position: relative;
+        background-color: #fcedda;
+        min-height: 100vh;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+      .collectionSection::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        width: 90%;
+        height: 2px;
+        border-bottom: 2px solid #792932;
+      }
+      .collectionContainer {
+        position: relative;
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        gap: 10px;
+      }
+      .collectionBox {
+        position: relative;
+        width: 300px;
+        border-radius: 10px;
+        cursor: pointer;
+        overflow: hidden;
+      }
+      .collectionImg {
+        width: 100%;
+        object-fit: contain;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        transition: 1s;
+      }
+      .collectionImg:hover {
+        transform: scale(1.1);
+      }
+      .collectionItemName {
+        width: 100%;
+        position: absolute;
+        bottom: 0px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        padding: 10px;
+        background-color: white;
+      }
+      .aboutSection {
+        position: relative;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #fcedda;
+      }
+      .aboutSection::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        width: 90%;
+        height: 2px;
+        border-bottom: 2px solid #792932;
+      }
+      .aboutContainer {
+        position: relative;
+        height: calc(100vh - 176px);
+        display: flex;
+        align-items: center;
+      }
+      .abContainera {
+        position: relative;
+        padding: 1.3rem;
+        width: 50%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+        gap: 10px;
+      }
+      .abContainerb {
+        position: relative;
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .aboutImgb {
+        height: 300px;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+      .gallerySection {
+        position: relative;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #fcedda;
+      }
+      .gallerySection::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        width: 90%;
+        height: 2px;
+        border-bottom: 2px solid #792932;
+      }
+      .galleryContainer {
+        position: relative;
+        width: 100%;
+        column-count: 3;
+        align-items: stretch;
+        padding: 10px;
+      }
+      .galleryBox,
+      .galleryBox > * {
+        height: auto !important;
+      }
+      .galleryBox {
+        position: relative;
+        border-radius: 10px;
+      }
+      .galImg {
+        width: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+      .testimonialsSections {
+        position: relative;
+        padding: 1.1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fcedda;
+      }
+      .testimonialsSections::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        width: 90%;
+        height: 2px;
+        border-bottom: 2px solid #792932;
+      }
+      .tesimonialContainera {
+        position: relative;
+        padding: 1.2rem;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+        gap: 10px;
+      }
+      .testimonialTitle {
+        font-size: 30px;
+      }
+      .tesimonialContainerb {
+        position: relative;
+        padding: 10px;
+        width: 50%;
+        height: 50vh;
+        overflow-y: auto;
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 10px;
+      }
+      .tesimonialContainerb::-webkit-scrollbar {
+        display: none;
+      }
+      .testimonialBox {
+        display: inline-block;
+        position: relative;
+        width: 100%;
+        break-inside: av;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: white;
+        box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+      }
+      .testiName {
+        font-size: 20px;
+        font-weight: 600;
+      }
+      .contactusSection {
+        position: relative;
+        padding: 1.1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        justify-content: start;
+        background-color: #fcedda;
+      }
+      .formContainer {
+        position: relative;
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .subFormBox {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .formBox {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+      .inputField {
+        padding: 10px 10px;
+        border-radius: 20px;
+        border: 2px solid hsl(353, 49%, 40%);
+        font-size: 16px;
+        background-color: hsl(34, 85%, 95%);
+        outline: none;
+        transition: 1s;
+      }
+      .inputField:focus {
+        border: 2px solid #792932;
+        background-color: #fcedda;
+      }
+      .messageInput {
+        padding: 10px 10px;
+        border-radius: 20px;
+        border: 2px solid hsl(353, 49%, 40%);
+        font-size: 16px;
+        background-color: hsl(34, 85%, 95%);
+        resize: none;
+        height: 20vh;
+      }
+      .formSubBut {
+        padding: 10px 20px;
+        height: 50px;
+        border-radius: 40px;
+        text-decoration: none;
+        background-color: #792932;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        transition: 1s;
+      }
+      ion-icon {
+        font-size: 20px;
+      }
+      footer {
+        position: relative;
+        padding: 1.1rem;
+        display: flex;
+        flex-direction: column;
+        background-color: #792932;
+      }
+      .footerContainera {
+        position: relative;
+        display: flex;
+        gap: 10px;
+      }
+      .footerImg {
+        height: 300px;
+        width: 300px;
+        border-radius: 10px;
+      }
+      .footerBoxa {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .footera {
+        font-size: 16px;
+        font-weight: 600;
+        text-decoration: none;
+        color: white;
+      }
+      .footerContainerb {
+        position: relative;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .footerName {
+        font-family: "Delius Swash Caps", cursive;
+        font-size: 210px;
+        color: white;
+      }
+      .xfooterCon {
+        position: relative;
+        display: flex;
+        gap: 10px;
+      }
+      .navBut {
+        display: none;
+      }
+      .hezpp {
+        text-align: center;
+      }
+      @media (max-width: 1050px) {
+        .abContainerb {
+          width: auto;
+        }
+        .tesimonialContainerb {
+          grid-template-columns: auto;
+        }
+        .footerName {
+          font-size: 90px;
+        }
+      }
+      @media (max-width: 910px) {
+        .xfooterCon {
+          flex-direction: column-reverse;
+        }
+        iframe {
+          width: 100%;
+        }
+      }
+      @media (max-width: 965px) {
+        .aboutContainer {
+          flex-direction: column-reverse;
+          height: auto;
+        }
+        .abContainera {
+          width: 100%;
+        }
+        .collectionContainer {
+          flex-wrap: wrap;
+        }
+      }
+      @media (max-width: 890px) {
+        .navBut {
+          display: block;
+        }
+        .headerBox {
+          position: absolute;
+          top: 60px;
+          left: 0;
+          background: white;
+          height: calc(100vh - 27px);
+          width: 100%;
+          display: none;
+          flex-direction: column;
+          align-items: start;
+          padding: 10px;
+        }
+      }
+      @media (max-width: 754px) {
+        .heroDes {
+          width: 90%;
+        }
+        .formContainer {
+          width: 90%;
+        }
+        .subFormBox {
+          flex-wrap: nowrap;
+          flex-direction: column;
+        }
+        .footerImg {
+          width: 100%;
+        }
+      }
+      @media (max-width: 748px) {
+        .footerContainera {
+          flex-direction: column;
+        }
+        .xfooterCon {
+          flex-direction: column;
+        }
+      }
+      @media (max-width: 665px) {
+        .testimonialsSections {
+          flex-direction: column;
+        }
+        .tesimonialContainera {
+          width: 100%;
+        }
+        .tesimonialContainerb {
+          width: 100%;
+          height: auto;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+      }
+      @media (max-width: 635px) {
+        .heroDes {
+          width: 100%;
+        }
+        .containerb {
+          justify-content: center;
+        }
+        .footerName {
+          font-size: 50px;
+        }
+        .loaderCon {
+          width: 90%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loader">
+      <h1 class="headerLogo">Nish Boutique</h1>
+      <div class="loaderCon">
+        <div class="loaderBox"></div>
+      </div>
+    </div>
+    <div class="world" id="main">
+      <header>
+        <h1 class="headerLogo">Nish Boutique</h1>
+        <p class="navBut" onclick="navFunc()" id="navBut">
+          <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+        </p>
+        <div class="headerBox" id="navCon">
+          <a href="#home" class="headderLink">Home</a>
+          <a href="#collection" class="headderLink">Our Collections</a>
+          <a href="#about" class="headderLink">About Us</a>
+          <a href="#gallery" class="headderLink">Gallery</a>
+          <a href="#testimonials" class="headderLink">Testimonials</a>
+          <a href="#contact" class="headderLink">Contact Us</a>
+          <a href="" class="headerBut">Buy Now</a>
+        </div>
+      </header>
+      <section class="heroSection" id="home">
+        <div class="heroCon">
+          <div class="containera">
+            <h1 class="hezpp">Elegance Woven for Every Occasion</h1>
+            <h2 class="hezpp">
+              Randheja's Premier Destination for Women's Fashion & Bridal Wear
+            </h2>
+            <p class="heroDes">
+              Step into Nish Boutique in Randheja to explore our exquisite
+              collection of designer dresses, stunning bridal lehengas, and
+              elegant party wear. Find the perfect traditional ethnic outfit for
+              your special day.
+            </p>
+            <button class="heroCtabut">Explore Our Collection</button>
+          </div>
+          <div class="containerb">
+            <div class="xherobcon">
+              <div class="conbBoxa">
+                <img src="ha.jpg" class="heroBoximg" alt="" />
+              </div>
+              <div class="conbBoxa">
+                <img src="hb.jpg" class="heroBoximg" alt="" />
+              </div>
+              <div class="conbBoxa">
+                <img src="hc.jpg" class="heroBoximg" alt="" />
+              </div>
+              <div class="conbBoxa">
+                <img src="hd.jpg" class="heroBoximg" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="collectionSection" id="collection">
+        <h1>Our Collection</h1>
+        <div class="collectionContainer">
+          <div class="collectionBox">
+            <img src="cola.png" class="collectionImg" alt="Lehenga Sets" />
+            <p class="collectionItemName">Lehenga Sets</p>
+          </div>
+          <div class="collectionBox">
+            <img src="colb.png" class="collectionImg" alt="Lehenga Sets" />
+            <p class="collectionItemName">Cape & Palazzos</p>
+          </div>
+          <div class="collectionBox">
+            <img src="colc.jpg" class="collectionImg" alt="Lehenga Sets" />
+            <p class="collectionItemName">Tunic / Kurti</p>
+          </div>
+          <div class="collectionBox">
+            <img src="cold.png" class="collectionImg" alt="Lehenga Sets" />
+            <p class="collectionItemName">Anarkali Suits</p>
+          </div>
+        </div>
+        <button class="heroCtabut">Explore More Collection</button>
+      </section>
+      <section class="aboutSection" id="about">
+        <h1>About Us</h1>
+        <div class="aboutContainer">
+          <div class="abContainera">
+            <h2>Our Story: Rooted in Tradition, Designed for You</h2>
+            <p>
+              Located in the heart of Randheja, Gujarat, Nish Boutique is a
+              premier destination for women's fashion. We specialize in curating
+              exquisite bridal lehengas, elegant designer dresses, and vibrant
+              party wear that celebrate traditional ethnic charm. Whether you
+              are preparing for your wedding or a festive celebration, our
+              handcrafted collections are designed to make every woman feel
+              beautiful and confident.
+            </p>
+            <button class="heroCtabut">Visit Our Store</button>
+          </div>
+          <div class="abContainerb">
+            <img src="aboutImg.png" class="aboutImgb" alt="Nish Boutique" />
+          </div>
+        </div>
+      </section>
+      <section class="gallerySection" id="gallery">
+        <h1>Gallery</h1>
+        <div class="galleryContainer">
+          <div class="galleryBox">
+            <img src="gala.jpg" class="galImg" alt="Nish Boutique" />
+          </div>
+          <div class="galleryBox">
+            <img src="galb.jpg" class="galImg" alt="Nish Boutique" />
+          </div>
+          <div class="galleryBox">
+            <img src="gald.jpg" class="galImg" alt="Nish Boutique" />
+          </div>
+          <div class="galleryBox">
+            <img src="gale.jpg" class="galImg" alt="Nish Boutique" />
+          </div>
+          <div class="galleryBox">
+            <img src="galf.jpg" class="galImg" alt="Nish Boutique" />
+          </div>
+          <div class="galleryBox">
+            <img src="galg.jpg" class="galImg" alt="Nish Boutique" />
+          </div>
+        </div>
+      </section>
+      <section class="testimonialsSections" id="testimonials">
+        <div class="tesimonialContainera">
+          <p class="testimonialTitle">What Our Customers are Saying</p>
+          <p>
+            Read how Nish Boutique transforms special days into unforgettable
+            memories. From stunning bridal lehengas to elegant party wear,
+            discover why women across Gujarat trust us for their perfect fit and
+            style.
+          </p>
+        </div>
+        <div class="tesimonialContainerb">
+          <div class="testimonialBox">
+            <p class="testiName">Priya Patel</p>
+            <p class="testiDes">
+              I bought my bridal lehenga from Nish Boutique, and it was an
+              absolute dream! The intricate embroidery and perfect fit made me
+              feel like royalty on my wedding day. Highly recommend them for
+              traditional wear in Gujarat!
+            </p>
+          </div>
+          <div class="testimonialBox">
+            <p class="testiName">Riddhi Shah</p>
+            <p class="testiDes">
+              The designer dresses at Nish Boutique are simply stunning. I found
+              the most elegant party wear for my cousin's reception. The staff
+              was incredibly helpful, ensuring I found the perfect outfit that
+              matched my style and budget.
+            </p>
+          </div>
+          <div class="testimonialBox">
+            <p class="testiName">Anjali Desai</p>
+            <p class="testiDes">
+              Nish Boutique in Randheja is my go-to place for ethnic wear. Their
+              collection is vibrant, unique, and of premium quality. I recently
+              purchased a stunning saree, and the compliments I received were
+              endless. Truly the best boutique around!
+            </p>
+          </div>
+          <div class="testimonialBox">
+            <p class="testiName">Meera Thakkar</p>
+            <p class="testiDes">
+              Finding a good boutique in our area used to be tough, but Nish
+              Boutique changed that. Their party wear collection is modern yet
+              rooted in tradition. The fabric quality and stitching are
+              flawless. I will definitely be back!
+            </p>
+          </div>
+          <div class="testimonialBox">
+            <p class="testiName">Neha Joshi</p>
+            <p class="testiDes">
+              I had a wonderful experience shopping for my sister's wedding. The
+              team at Nish Boutique helped us select beautiful traditional
+              ethnic outfits. The attention to detail in their designer dresses
+              is truly remarkable and worth every single penny.
+            </p>
+          </div>
+          <div class="testimonialBox">
+            <p class="testiName">Kavita Modi</p>
+            <p class="testiDes">
+              If you are looking for gorgeous bridal lehengas, look no further.
+              Nish Boutique offers an exclusive range that you won't find
+              anywhere else. The fitting was done perfectly on the first try,
+              saving me so much last-minute stress.
+            </p>
+          </div>
+          <div class="testimonialBox">
+            <p class="testiName">Sonal Rajput</p>
+            <p class="testiDes">
+              I absolutely love the traditional ethnic wear I got from Nish
+              Boutique. The colors are so vibrant and the fabric feels
+              luxurious. It is so nice to have such a high-quality fashion store
+              right here in Randheja.
+            </p>
+          </div>
+          <div class="testimonialBox">
+            <p class="testiName">Drashti Amin</p>
+            <p class="testiDes">
+              From the moment I walked in, the service was exceptional. They
+              have a brilliant eye for fashion and helped me pick a designer
+              dress that flattered my figure perfectly. Nish Boutique is a
+              hidden gem for party wear!
+            </p>
+          </div>
+        </div>
+      </section>
+      <secstion class="contactusSection" id="contact">
+        <h1>Let's Connect</h1>
+        <p class="heroDes">
+          We would love to hear from you! Whether you have a question, need
+          support, or want to explore a partnership, our dedicated team is here
+          and ready to help.
+        </p>
+        <form action="" class="formContainer">
+          <div class="subFormBox">
+            <div class="formBox">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                placeholder="Name"
+                name="name"
+                class="inputField"
+                required
+              />
+            </div>
+            <div class="formBox">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                placeholder="Email"
+                name="email"
+                class="inputField"
+                required
+              />
+            </div>
+            <div class="formBox">
+              <label for="phnumber">Phone Number</label>
+              <input
+                type="number"
+                placeholder="Phone Number"
+                name="phnumber"
+                class="inputField"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="formBox">
+            <label for="message">Message</label>
+            <textarea name="message" class="messageInput" required></textarea>
+          </div>
+          <button class="formSubBut">
+            Submit <ion-icon name="arrow-forward-outline"></ion-icon>
+          </button>
+        </form>
+      </secstion>
+      <footer>
+        <div class="footerContainera">
+          <img src="footerImg.png" class="footerImg" />
+          <div class="xfooterCon">
+            <div class="footerBoxa">
+              <p style="color: white">
+                Explore our site map, connect with us on social media, and
+                subscribe to our newsletter for the latest updates. We are
+                committed to providing exceptional service and building lasting
+                relationships.
+              </p>
+              <a href="" class="footera">+91 99798 63472</a>
+              <a href="" class="footera">nishboutique@gmail.com</a>
+              <a href="" class="footera"
+                >Shop No. 22, Maple Green Residency, near The K-7 Chokdi,
+                Randheja, Gujarat 382610</a
+              >
+            </div>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3665.415655161713!2d72.64000777477733!3d23.264341907263677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395c2d705bec9671%3A0x40187df14aca5d2a!2sNish%20Boutique!5e0!3m2!1sen!2sin!4v1773115472783!5m2!1sen!2sin"
+              width="300"
+              height="300"
+              style="border: 0; border-radius: 10px"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+        <div class="footerContainerb">
+          <p class="footerName">Nish Boutique</p>
+        </div>
+      </footer>
+    </div>
+    <script>
+      const loader = document.getElementById("loader");
+      const main = document.getElementById("main");
+
+      window.addEventListener("load", () => {
+        loader.style.display = "none";
+        main.style.visibility = "visible";
+      });
+
+      function navFunc() {
+        var navCon = document.getElementById("navCon");
+
+        // Check the current computed style
+        if (navCon.style.display === "flex") {
+          navCon.style.display = "none";
+        } else {
+          navCon.style.display = "flex";
+        }
+      }
+    </script>
+  </body>
+</html>
